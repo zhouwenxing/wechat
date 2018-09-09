@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.core.mapper.SubscribeInfoMapper">
+	<!-- 根据openId获取用户关注信息 -->
+	<select id="getSubscribeInfo" resultType="com.wechat.core.model.SubscribeInfo">
+		select id,open_id,unionid,status,recommend_id from dubei_subscribe_info 
+		<where>
+			<if test="eventNotice.FromUserName !=null and eventNotice.FromUserName !=''">
+				open_id=#{eventNotice.FromUserName}
+			</if>
+		</where>
+		order by create_time asc
+	</select>
+	
+	<!-- 根据openId获取用户关注信息 -->
+	<select id="getNewOneSubscribe" resultType="com.wechat.core.model.SubscribeInfo">
+		select 
+			id,open_id,unionid,status,recommend_id,media_id,media_create_time 
+		from 
+			dubei_subscribe_info where open_id = #{openId}
+		order by 
+			ifnull(update_time,create_time) desc
+		limit 1
+	</select>
+	
+	<!-- 计算用户邀请人数 -->
+	<select id="countInviteSubscribeNum" resultType="java.lang.Integer">
+		select 
+			count(id) as number 
+		from 
+			dubei_subscribe_info 
+		where 
+			recommend_id = #{unionid}
+		and
+			status = 1
+	</select>
+	
+	<!-- 根据unionid查询微信用户相关信息(如：open_id) -->
+	<select id="getByUnionid" resultType="com.wechat.core.model.SubscribeInfo">
+		select id,open_id,unionid from dubei_subscribe_info where unionid=#{unionid} limit 1
+	</select>
+</mapper>

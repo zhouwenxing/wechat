@@ -1,0 +1,29 @@
+#图片相关
+imageUploadPath: /images
+imagePathPrefix: /usr/local/dubei
+imageSize: 2097152
+imageResizeWidth: 220
+imageResizeHeight: 150
+imageUrlPrefix: http://test2.17dubei.com/image%s
+
+
+#微信相关
+appId: wx360c414d6abef40f
+appSecret: 3ee2f77f7de2df95e7a0809a1f923f04
+#获取accessToken
+accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token
+#生成临时二维码
+generateTempQrCodeUrl: https://api.weixin.qq.com/cgi-bin/qrcode/create
+#获取临时二维码url
+obtainTempQrCodeUrl: https://mp.weixin.qq.com/cgi-bin/showqrcode
+#获取用户信息
+wechatUserInfoUrl: https://api.weixin.qq.com/cgi-bin/user/info
+#添加客服
+addCustomerServiceUrl: https://api.weixin.qq.com/customservice/kfaccount/add?access_token={0}
+#发送客服消息
+sendCustomerServiceMsg: https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}
+#创建菜单接口
+createMenuUrl: https://api.weixin.qq.com/cgi-bin/menu/create?access_token={0}
+
+
+EncodingAESKey: 5fAaQvyCPlHGrXXivJRQ4VWPXeFW8mjK4I5zMHNEHfS

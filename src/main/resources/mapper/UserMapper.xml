@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wechat.core.mapper.UserMapper">
+	<!-- 根据openId获取用户关注信息 -->
+	<select id="getUserVipInfo" resultType="com.wechat.core.model.User">
+		select id,open_id,unionid,vip_status,vip_over_time,invite_flag from dubei_user where unionid=#{unionid}
+	</select>
+	
+</mapper>
